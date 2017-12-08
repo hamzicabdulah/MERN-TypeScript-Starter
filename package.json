@@ -1,5 +1,5 @@
 {
-  "name": "react-typescript-node",
+  "name": "mern-typescript-starter",
   "version": "1.0.0",
   "description": "",
   "main": "webpack.config.js",
@@ -10,7 +10,7 @@
     "dev:client": "webpack -wd",
     "dev": "npm-run-all --parallel dev:client dev:server "
   },
-  "author": "Abdulah Hamzic",
+  "author": "Abdulah Hamzic <https://github.com/hamzicabdulah>",
   "license": "ISC",
   "devDependencies": {
     "@types/axios": "^0.14.0",

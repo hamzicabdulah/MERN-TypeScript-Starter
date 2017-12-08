@@ -26,18 +26,18 @@ interface IDispatchProps {
   actions: ActionCreatorsMapObject;
 }
 
+const defaultHomePageState = {
+  user: {
+    github: '',
+    name: ''
+  },
+  loading: false
+}
+
 class HomePage extends React.Component<IHomePageProps, IHomePageState> {
   constructor(props: IHomePageProps) {
     super(props);
-
-    this.state = {
-      user: {
-        github: '',
-        name: ''
-      },
-      loading: false
-    }
-
+    this.state = defaultHomePageState;
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
@@ -54,15 +54,7 @@ class HomePage extends React.Component<IHomePageProps, IHomePageState> {
   onFormSubmit(event: FormEvent<HTMLFormElement>) {
     this.setState({ loading: true });
     this.props.actions.addUser(this.state.user)
-      .then(() => {
-        this.setState({
-          loading: false,
-          user: {
-            github: '',
-            name: ''
-          }
-        });
-      })
+      .then(() => this.setState(defaultHomePageState))
       .catch((error: Error) => {
         alert(error);
       });
