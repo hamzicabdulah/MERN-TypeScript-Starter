@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { StatelessComponent } from 'react';
 import { tableBorder } from '../../styles/usersList';
 
 export interface IUser {
@@ -10,7 +11,7 @@ interface IUsersListProps {
     users: IUser[];
 }
 
-export const UsersList = ({ users }: IUsersListProps) => {
+export const UsersList: StatelessComponent<IUsersListProps> = ({ users }) => {
     return (
         <table style={tableBorder}>
             <thead>

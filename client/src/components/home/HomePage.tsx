@@ -1,16 +1,33 @@
 import * as React from 'react';
+import { FormEvent } from 'react';
+import { bindActionCreators, Action, ActionCreatorsMapObject } from 'redux';
+import { MapStateToProps, connect, Connect, MapDispatchToProps, Dispatch } from 'react-redux';
 import axios from 'axios';
 import { HomeForm } from './HomeForm';
 import { IUser, UsersList } from './UsersList';
+import { usersActions } from '../../actions/usersActions';
+import { IInitialState } from '../../reducers/initialState';
+
+interface IHomePageProps {
+  users: IUser[];
+  actions: ActionCreatorsMapObject;
+}
 
 interface IHomePageState {
   user: IUser;
-  users: IUser[];
   loading: boolean;
 }
 
-export class HomePage extends React.Component<{}, IHomePageState> {
-  constructor(props: any) {
+interface IStateProps {
+  users: IUser[];
+}
+
+interface IDispatchProps {
+  actions: ActionCreatorsMapObject;
+}
+
+class HomePage extends React.Component<IHomePageProps, IHomePageState> {
+  constructor(props: IHomePageProps) {
     super(props);
 
     this.state = {
@@ -18,51 +35,35 @@ export class HomePage extends React.Component<{}, IHomePageState> {
         github: '',
         name: ''
       },
-      users: [],
-      loading: true
+      loading: false
     }
 
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
-  componentDidMount() {
-    this.setState({ loading: true });
-    axios.get('/api/getAllUsers')
-      .then((response) => {
-        const users = response.data;
-        this.setState({
-          users,
-          loading: false
-        });
-      })
-      .catch((error) => {
-        alert(error);
-      });
-  }
-
-  onInputChange(event: any) {
-    const property = event.target.name;
-    const value = event.target.value;
+  onInputChange(event: FormEvent<HTMLInputElement>) {
+    const input = event.currentTarget;
     const user: IUser = {
       ...this.state.user,
-      [property]: value
+      [input.name]: input.value
     };
     this.setState({ user });
   }
 
-  onFormSubmit(event: any) {
+  onFormSubmit(event: FormEvent<HTMLFormElement>) {
     this.setState({ loading: true });
-    axios.post('/api/addUser', this.state.user)
-      .then((response) => {
-        const user = response.data;
-        const users: IUser[] = [...this.state.users, user];
+    this.props.actions.addUser(this.state.user)
+      .then(() => {
         this.setState({
-          users,
-          loading: false
+          loading: false,
+          user: {
+            github: '',
+            name: ''
+          }
         });
       })
-      .catch((error) => {
+      .catch((error: Error) => {
         alert(error);
       });
     event.preventDefault();
@@ -72,10 +73,24 @@ export class HomePage extends React.Component<{}, IHomePageState> {
     return (
       <div>
         <h1>Home</h1>
-        <HomeForm onInputChange={this.onInputChange} onFormSubmit={this.onFormSubmit} loading={this.state.loading} />
-        {this.state.users.length > 0 && <UsersList users={this.state.users} />}
+        <HomeForm onInputChange={this.onInputChange} onFormSubmit={this.onFormSubmit} loading={this.state.loading} user={this.state.user} />
+        {this.props.users.length > 0 && <UsersList users={this.props.users} />}
         {this.state.loading && <p>Loading</p>}
       </div>
     );
   }
 }
+
+const mapStateToProps: MapStateToProps<IStateProps, any, IInitialState> = (state) => {
+  return {
+    users: state.users
+  };
+}
+
+const mapDispatchToProps: MapDispatchToProps<IDispatchProps, any> = (dispatch: Dispatch<any>) => {
+  return {
+    actions: bindActionCreators(usersActions, dispatch)
+  }
+}
+
+export const HomePageConnected = connect(mapStateToProps, mapDispatchToProps)(HomePage);
