@@ -7,7 +7,9 @@
     "outDir": "./public/",
     "preserveConstEnums": true,
     "removeComments": true,
-    "target": "ES5"
+    "target": "ES5",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   },
   "exclude": [
     "public"

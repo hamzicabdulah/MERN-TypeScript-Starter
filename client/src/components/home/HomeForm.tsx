@@ -3,7 +3,7 @@ import { FormEvent, StatelessComponent } from 'react';
 import { formStyle, labelStyle, inputContStyle } from '../../styles/homeForm';
 import { IUser } from './UsersList';
 
-interface IHomeFormProps {
+export interface IHomeFormProps {
     onInputChange: (event: FormEvent<HTMLInputElement>) => void;
     onFormSubmit: (event: FormEvent<HTMLFormElement>) => void;
     loading: boolean;

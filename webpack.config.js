@@ -14,7 +14,7 @@ var config = {
       {
         test: /\.tsx?$/,
         loader: "ts-loader",
-        exclude: /public/
+        exclude: [/public/, /tests/]
       }
     ]
   }

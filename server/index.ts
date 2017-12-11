@@ -3,7 +3,7 @@ import { resolve } from 'path';
 import { connect } from 'mongoose';
 import * as dotenv from 'dotenv';
 import * as bodyParser from 'body-parser';
-import { api } from "./api/api";
+import { api } from './api/api';
 
 const app = express();
 dotenv.config({

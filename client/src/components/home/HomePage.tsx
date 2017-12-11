@@ -8,7 +8,7 @@ import { IUser, UsersList } from './UsersList';
 import { usersActions } from '../../actions/usersActions';
 import { IInitialState } from '../../reducers/initialState';
 
-interface IHomePageProps {
+export interface IHomePageProps {
   users: IUser[];
   actions: ActionCreatorsMapObject;
 }
@@ -26,7 +26,7 @@ interface IDispatchProps {
   actions: ActionCreatorsMapObject;
 }
 
-const defaultHomePageState = {
+const defaultHomePageState: IHomePageState = {
   user: {
     github: '',
     name: ''
@@ -34,7 +34,7 @@ const defaultHomePageState = {
   loading: false
 }
 
-class HomePage extends React.Component<IHomePageProps, IHomePageState> {
+export class HomePage extends React.Component<IHomePageProps, IHomePageState> {
   constructor(props: IHomePageProps) {
     super(props);
     this.state = defaultHomePageState;
@@ -66,7 +66,7 @@ class HomePage extends React.Component<IHomePageProps, IHomePageState> {
       <div>
         <h1>Home</h1>
         <HomeForm onInputChange={this.onInputChange} onFormSubmit={this.onFormSubmit} loading={this.state.loading} user={this.state.user} />
-        {this.props.users.length > 0 && <UsersList users={this.props.users} />}
+        {this.props.users.length && <UsersList users={this.props.users} />}
         {this.state.loading && <p>Loading</p>}
       </div>
     );

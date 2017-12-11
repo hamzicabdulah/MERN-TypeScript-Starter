@@ -5,5 +5,5 @@ export interface IInitialState {
 }
 
 export const initialState: IInitialState = {
-    users: []
+    users: Array.prototype
 }

@@ -7,7 +7,7 @@ export interface IUser {
     name: string;
 }
 
-interface IUsersListProps {
+export interface IUsersListProps {
     users: IUser[];
 }
 
