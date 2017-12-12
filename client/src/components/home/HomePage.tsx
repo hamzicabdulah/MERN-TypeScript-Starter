@@ -66,7 +66,7 @@ export class HomePage extends React.Component<IHomePageProps, IHomePageState> {
       <div>
         <h1>Home</h1>
         <HomeForm onInputChange={this.onInputChange} onFormSubmit={this.onFormSubmit} loading={this.state.loading} user={this.state.user} />
-        {this.props.users.length && <UsersList users={this.props.users} />}
+        {this.props.users.length > 0 && <UsersList users={this.props.users} />}
         {this.state.loading && <p>Loading</p>}
       </div>
     );

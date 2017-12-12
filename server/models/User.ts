@@ -1,6 +1,13 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model, Model, Document } from 'mongoose';
 
-export const User = model('User', new Schema({
+export let User: Model<Document>;
+const schema = new Schema({
     name: String,
     github: String
-}));
+});
+
+try {
+    User = model('User');
+} catch(err) {
+    User = model('User', schema);;
+}
