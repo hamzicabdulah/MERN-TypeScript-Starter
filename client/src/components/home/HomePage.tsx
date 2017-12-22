@@ -1,30 +1,15 @@
 import * as React from 'react';
 import { FormEvent } from 'react';
-import { bindActionCreators, Action, ActionCreatorsMapObject } from 'redux';
+import { bindActionCreators, Action } from 'redux';
 import { MapStateToProps, connect, Connect, MapDispatchToProps, Dispatch } from 'react-redux';
 import axios from 'axios';
 import { HomeForm } from './HomeForm';
-import { IUser, UsersList } from './UsersList';
+import { UsersList } from './UsersList';
 import { usersActions } from '../../actions/usersActions';
-import { IInitialState } from '../../reducers/initialState';
+import { IHomePageState, IHomePageProps, IStateProps, IDispatchProps } from '../../interfaces/HomePage';
+import { IUser, IInitialState } from '../../interfaces/general';
 
-export interface IHomePageProps {
-  users: IUser[];
-  actions: ActionCreatorsMapObject;
-}
 
-interface IHomePageState {
-  user: IUser;
-  loading: boolean;
-}
-
-interface IStateProps {
-  users: IUser[];
-}
-
-interface IDispatchProps {
-  actions: ActionCreatorsMapObject;
-}
 
 const defaultHomePageState: IHomePageState = {
   user: {

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { User } from '../../classes/User';
-import { IUser } from '../../../client/src/components/home/UsersList';
+import { IUser } from '../../../client/src/interfaces/general';
 
 export function getAllUsers(req: Request, res: Response) {
     User.getAllUsers()

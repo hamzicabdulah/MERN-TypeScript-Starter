@@ -2,10 +2,11 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { expect } from 'chai';
 import { mount, ReactWrapper } from 'enzyme';
-import { IHomePageProps, HomePage } from '../../../src/components/home/HomePage';
-import { IUser } from '../../../src/components/home/UsersList';
+import { HomePage } from '../../../src/components/home/HomePage';
 import { usersActions } from '../../../src/actions/usersActions';
 import { users } from '../../constants';
+import { IUser } from '../../../src/interfaces/general';
+import { IHomePageProps } from '../../../src/interfaces/HomePage';
 
 const render = (users: IUser[]): ReactWrapper => {
     const props: IHomePageProps = { users, actions: usersActions };

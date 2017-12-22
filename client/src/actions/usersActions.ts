@@ -1,8 +1,8 @@
-import { IUser } from '../components/home/UsersList';
 import { Dispatch, ActionCreatorsMapObject, AnyAction } from 'redux';
 import axios from 'axios';
 import { AxiosResponse } from 'axios';
 import { GET_ALL_USERS, ADD_USER } from './actionTypes';
+import { IUser } from '../interfaces/general';
 
 export const usersActions: ActionCreatorsMapObject = {
     getAllUsersSuccess(users: IUser[]): AnyAction {

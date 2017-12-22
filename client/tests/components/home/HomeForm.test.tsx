@@ -2,8 +2,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { expect } from 'chai';
 import { shallow, ShallowWrapper } from 'enzyme';
-import { IHomeFormProps, HomeForm } from '../../../src/components/home/HomeForm';
+import { HomeForm } from '../../../src/components/home/HomeForm';
 import { user } from '../../constants';
+import { IHomeFormProps } from '../../../src/interfaces/HomeForm';
 
 let props: IHomeFormProps;
 let wrapper: ShallowWrapper<IHomeFormProps>;

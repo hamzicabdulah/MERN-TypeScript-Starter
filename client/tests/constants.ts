@@ -1,4 +1,4 @@
-import { IUser } from '../src/components/home/UsersList';
+import { IUser } from '../src/interfaces/general';
 
 export const user: IUser = { name: 'Abdulah', github: 'hamzicabdulah' };
 export const user1: IUser = { name: 'Someone', github: 'someone' };

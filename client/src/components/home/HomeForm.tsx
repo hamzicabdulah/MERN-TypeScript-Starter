@@ -1,14 +1,7 @@
 import * as React from 'react';
-import { FormEvent, StatelessComponent } from 'react';
+import { StatelessComponent } from 'react';
 import { formStyle, labelStyle, inputContStyle } from '../../styles/homeForm';
-import { IUser } from './UsersList';
-
-export interface IHomeFormProps {
-    onInputChange: (event: FormEvent<HTMLInputElement>) => void;
-    onFormSubmit: (event: FormEvent<HTMLFormElement>) => void;
-    loading: boolean;
-    user: IUser;
-}
+import { IHomeFormProps } from '../../interfaces/HomeForm';
 
 export const HomeForm: StatelessComponent<IHomeFormProps> = ({ onInputChange, onFormSubmit, loading, user }) => {
     return (

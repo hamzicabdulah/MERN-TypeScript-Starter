@@ -2,8 +2,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { expect } from 'chai';
 import { shallow, ShallowWrapper } from 'enzyme';
-import { IUsersListProps, UsersList } from '../../../src/components/home/UsersList';
+import { UsersList } from '../../../src/components/home/UsersList';
 import { users } from '../../constants';
+import { IUsersListProps } from '../../../src/interfaces/UsersList';
 
 let props: IUsersListProps;
 let wrapper: ShallowWrapper<IUsersListProps>;

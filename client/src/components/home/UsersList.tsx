@@ -1,15 +1,8 @@
 import * as React from 'react';
 import { StatelessComponent } from 'react';
 import { tableBorder } from '../../styles/usersList';
-
-export interface IUser {
-    github: string;
-    name: string;
-}
-
-export interface IUsersListProps {
-    users: IUser[];
-}
+import { IUsersListProps } from '../../interfaces/UsersList';
+import { IUser } from '../../interfaces/general';
 
 export const UsersList: StatelessComponent<IUsersListProps> = ({ users }) => {
     return (
