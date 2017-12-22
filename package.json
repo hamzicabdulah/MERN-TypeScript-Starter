@@ -4,8 +4,8 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "webpack && npm run start:server",
-    "start:server": "cd server && ts-node .",
+    "start": "node server",
+    "start:server": "ts-node server",
     "dev:server": "nodemon -e ts --ignore \"client/**/*\" --ignore \"server/tests/**/*\"  --exec \"npm run start:server\"",
     "dev:client": "webpack -wd",
     "test": "mocha -r ts-node/register -r jsdom-global/register -r client/tests/configureTests \"client/tests/**/*.*\" \"server/tests/**/*.*\"",
