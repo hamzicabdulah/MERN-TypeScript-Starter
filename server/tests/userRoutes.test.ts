@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import chaiHttp = require('chai-http');
 import { app } from '../index';
 import { user } from '../../client/tests/constants';
-import { User } from '../models/User';
+import { UserModel } from '../models/User';
 
 chai.use(chaiHttp);
 const server = app.listen(undefined); // This sets up a temporary server just for testing purposes
@@ -24,7 +24,7 @@ describe('Api Requests', () => {
     describe('POST /api/addUser', () => {
         before((done) => {
             // Remove the user that is going to be added before adding them to the database
-            User.remove(user, (err) => {
+            UserModel.remove(user, (err) => {
                 done();
             });
         });
